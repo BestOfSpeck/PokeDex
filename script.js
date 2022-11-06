@@ -10,7 +10,8 @@ async function loadPokedex() {
 
 function renderPokemonInfo(responseAsJson) {
     document.getElementById('pokedex_info_name').innerHTML = responseAsJson['name'];
-    document.getElementById('pokedex_info_types').innerHTML = responseAsJson['types'][0]['type']['name'];
+    document.getElementById('pokemon_img').src = responseAsJson['sprites']['other']['home']['front_default'];
+    document.getElementById('pokedex_info_type').innerHTML = responseAsJson['types'][0]['type']['name'];
     document.getElementById('pokedex_info_id').innerHTML = `#${responseAsJson['id']}`;
-    document.getElementById('pokedex_info_img').url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png'
+
 }

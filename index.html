@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="script.js"></script>
     <title>PokeDex</title>
 </head>
@@ -15,19 +17,41 @@
 
     <div id="pokedex">
         <div>
-            <div>
-                <div id="pokedex_info_name"></div>
-                <div id="pokedex_info_types"></div>
-            </div>
-
-            <div id="pokedex_info_id"></div>
+            <h1 id="pokedex_info_name"></h1>
+            <span id="pokedex_info_type"></span>
         </div>
 
-        <div id="pokedex_info_img"></div>
-
-
-
+        <span id="pokedex_info_id"></span>
     </div>
+
+    <div class="info-container">
+        <img id="pokemon_img" src="" alt="">
+    </div>
+
+    <div class="navigation">
+        <div class="btn-group " role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+            <label class="btn btn-basic" for="btnradio1">About</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+            <label class="btn btn-basic" for="btnradio2">Base Stats</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+            <label class="btn btn-basic" for="btnradio3">Evolution</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+            <label class="btn btn-basic" for="btnradio3">Moves</label>
+        </div>
+    </div>
+
+    <table>
+        <tr>
+            <td>Species</td>
+            <td>blitz</td>
+        </tr>
+    </table>
+
+
 </body>
 
 </html>
