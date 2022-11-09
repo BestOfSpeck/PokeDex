@@ -1,14 +1,21 @@
     async function loadPokedex() {
-        let query = document.getElementById('search_input').value;
-        let url = `https://pokeapi.co/api/v2/pokemon/${query}`;
+        // let query = document.getElementById('search_input').value;
+        let url = `https://pokeapi.co/api/v2/pokemon/charmander`;
         let response = await fetch(url);
         let responseAsJson = await response.json();
 
-
         renderPokemonInfo(responseAsJson);
+        renderBaseStats(responseAsJson)
         console.log(responseAsJson);
     }
 
+    function switchInformationes(selection) {
+        if (selection) {;
+            document.getElementById(selection).classList.add('d-none');
+        }
+
+
+    }
 
 
     function renderPokemonInfo(responseAsJson) {
@@ -31,3 +38,12 @@
             }
         });
     })
+
+    function renderBaseStats(responseAsJson) {
+        document.getElementById('baseStat_hp').innerHTML = responseAsJson['stats'][0]['base_stat'];
+        document.getElementById('baseStat_attack').innerHTML = responseAsJson['stats'][1]['base_stat'];
+        document.getElementById('baseStat_defense').innerHTML = responseAsJson['stats'][2]['base_stat'];
+        document.getElementById('baseStat_spAtk').innerHTML = responseAsJson['stats'][3]['base_stat'];
+        document.getElementById('baseStat_sp_def').innerHTML = responseAsJson['stats'][4]['base_stat'];
+        document.getElementById('baseStat_speed').innerHTML = responseAsJson['stats'][5]['base_stat'];
+    }

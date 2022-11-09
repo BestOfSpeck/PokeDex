@@ -13,43 +13,42 @@
 </head>
 
 <body onload="loadPokedex()">
+
+    <div class="input-container">
+        <input type="text" id="search_input" placeholder="...search Pokemon...">
+    </div>
+
+    <div id="pokedex">
+        <div>
+            <h1 id="pokedex_info_name"></h1>
+            <span id="pokedex_info_type"></span>
+        </div>
+
+        <span id="pokedex_info_id"></span>
+    </div>
+
+    <div class="info-container">
+        <img id="pokemon_img" src="" alt="">
+    </div>
+
+    <div class="navigation">
+        <div class="btn-group " role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+            <label id="btn_radio_0" onclick="switchInformationes('about_container')" class="btn btn-basic" for="btnradio1">About</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+            <label id="btn_radio_1" onclick="switchInformationes('baseStats_container')" class="btn btn-basic" for="btnradio2">Base Stats</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+            <label id="btn_radio_2" onclick="switchInformationes('btn_radio_2')" class="btn btn-basic" for="btnradio3">Evolution</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+            <label id="btn_radio_3" onclick="switchInformationes('btn_radio_3')" class="btn btn-basic" for="btnradio3">Moves</label>
+        </div>
+    </div>
+
+
     <div id="about_container">
-        <div class="input-container">
-            <input type="text" id="search_input" placeholder="...search Pokemon...">
-        </div>
-
-
-
-        <div id="pokedex">
-            <div>
-                <h1 id="pokedex_info_name"></h1>
-                <span id="pokedex_info_type"></span>
-            </div>
-
-            <span id="pokedex_info_id"></span>
-        </div>
-
-        <div class="info-container">
-            <img id="pokemon_img" src="" alt="">
-        </div>
-
-        <div class="navigation">
-            <div class="btn-group " role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                <label class="btn btn-basic" for="btnradio1">About</label>
-
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                <label class="btn btn-basic" for="btnradio2">Base Stats</label>
-
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                <label class="btn btn-basic" for="btnradio3">Evolution</label>
-
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                <label class="btn btn-basic" for="btnradio3">Moves</label>
-            </div>
-        </div>
-
-
         <table>
             <tr>
                 <td class="ml100">Species</td>
@@ -70,7 +69,39 @@
         </table>
     </div>
 
+    <div id="baseStats_container" class="d-none">
+        <div>
+            <table>
+                <tr>
+                    <td class="ml100">HP</td>
+                    <td class="ml100" id="baseStat_hp">1</td>
+                </tr>
+                <tr>
+                    <td class="ml100">Attack</td>
+                    <td class="ml100" id="baseStat_attack">1</td>
+                </tr>
+                <tr>
+                    <td class="ml100">Defense</td>
+                    <td class="ml100" id="baseStat_defense">1</td>
+                </tr>
+                <tr>
+                    <td class="ml100">Sp. Atk</td>
+                    <td class="ml100" id="baseStat_spAtk">1</td>
+                </tr>
+                <tr>
+                    <td class="ml100">Sp. Def</td>
+                    <td class="ml100" id="baseStat_sp_def">1</td>
+                </tr>
+                <tr>
+                    <td class="ml100">Speed</td>
+                    <td class="ml100" id="baseStat_speed">1</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
+
+    <div style="height:300px;"></div>
 
 </body>
 
