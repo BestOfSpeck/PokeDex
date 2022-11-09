@@ -1,68 +1,132 @@
-body {
-    margin: 0;
-    font-family: poppins;
-}
-
-#pokedex {
-    min-height: 50vh;
-    background-color: #FC6C6E;
-    display: flex;
-    justify-content: space-between;
-    padding: 24px;
-}
-
-#pokedex div h1 {
-    color: white;
-    font-size: 50px;
-    margin-bottom: 40px;
-}
-
-.info-container {
-    background-color: white;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
-    margin-top: -40px;
-    min-height: 100px;
-    display: flex;
-    justify-content: center;
-}
-
-#pokemon_img {
-    margin-top: -400px;
-}
-
-#pokedex_info_type {
-    font-size: 20px;
-    font-weight: bold;
-    margin-left: 20pxp;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, 0.425);
-    color: white;
-    border-radius: 20px;
-}
-
-#pokedex_info_id {
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    padding: 24px;
-    margin-top: 40px;
-}
-
-.navigation {
-    display: flex;
-    justify-content: center;
-}
-
-.btn-basic {
-    outline: none !important;
-    border: none !important;
-    font-size: 24px !important;
-    font-family: poppins !important;
-    margin-left: 30px !important;
-    border-radius: 20px !important;
-}
-
-.btn-basic:hover {
-    background-color: #fc6c6e85 !important;
-}
+    body {
+        margin: 0;
+        font-family: poppins;
+    }
+    
+    #pokedex {
+        min-height: 50vh;
+        background-color: #FC6C6E;
+        display: flex;
+        justify-content: space-between;
+        padding: 24px;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+        box-shadow: -0px -4px 9px -1px rgba(0, 0, 0, 0.34);
+        -webkit-box-shadow: -0px -4px 9px -1px rgba(0, 0, 0, 0.34);
+        -moz-box-shadow: -07px -4px 9px -1px rgba(0, 0, 0, 0.34);
+        padding-top: 70px;
+    }
+    
+    #pokedex div h1 {
+        color: white;
+        font-size: 50px;
+        margin-bottom: 40px;
+    }
+    
+    .info-container {
+        background-color: white;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+        margin-top: -40px;
+        min-height: 100px;
+        display: flex;
+        justify-content: center;
+        box-shadow: -0px -4px 9px -1px rgba(0, 0, 0, 0.34);
+        -webkit-box-shadow: -0px -4px 9px -1px rgba(0, 0, 0, 0.34);
+        -moz-box-shadow: -07px -4px 9px -1px rgba(0, 0, 0, 0.34);
+    }
+    
+    #pokemon_img {
+        margin-top: -400px;
+    }
+    
+    #pokedex_info_type {
+        font-size: 20px;
+        font-weight: bold;
+        margin-left: 20px;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.425);
+        color: white;
+        border-radius: 20px;
+    }
+    
+    #pokedex_info_id {
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        padding: 24px;
+        margin-top: 40px;
+    }
+    
+    .navigation {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 50px;
+    }
+    
+    .btn-basic {
+        outline: none !important;
+        border: none !important;
+        font-size: 30px !important;
+        font-family: poppins !important;
+        margin-left: 30px !important;
+        border-radius: 20px !important;
+    }
+    
+    .btn-basic:hover {
+        background-color: #fc6c6e28 !important;
+    }
+    
+    .input-container {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .input-container input {
+        width: 500px;
+        border: 2px solid rgba(0, 0, 0, 0.486);
+        border-radius: 10px;
+        text-align: center;
+        margin: 10px;
+        margin-bottom: -12px;
+        border: 2px solid #767676a9;
+        outline: none;
+        box-shadow: -0px 4px 9px -1px rgba(0, 0, 0, 0.54);
+        -webkit-box-shadow: -0px 4px 9px -1px rgba(0, 0, 0, 0.54);
+        -moz-box-shadow: -0px 4px 9px -1px rgba(0, 0, 0, 0.54);
+        caret-color: transparent;
+        font-family: 'poppins';
+    }
+    
+    .input-container input::placeholder {
+        opacity: .5;
+        padding-left: 10px;
+        text-align: center;
+    }
+    
+    .input-container input table {
+        display: flex;
+        justify-content: space-around;
+        font-size: 20px;
+        font-weight: 500;
+    }
+    
+    .ml100 {
+        font-size: 22px;
+        font-family: 'poppins';
+        padding: 20px 100px 20px 100px;
+        border-bottom: 1px solid #7676763a;
+    }
+    
+    .bold {
+        font-weight: bold;
+    }
+    
+    table {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .d-none {
+        display: none;
+    }

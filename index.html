@@ -13,43 +13,63 @@
 </head>
 
 <body onload="loadPokedex()">
-
-
-    <div id="pokedex">
-        <div>
-            <h1 id="pokedex_info_name"></h1>
-            <span id="pokedex_info_type"></span>
+    <div id="about_container">
+        <div class="input-container">
+            <input type="text" id="search_input" placeholder="...search Pokemon...">
         </div>
 
-        <span id="pokedex_info_id"></span>
-    </div>
 
-    <div class="info-container">
-        <img id="pokemon_img" src="" alt="">
-    </div>
 
-    <div class="navigation">
-        <div class="btn-group " role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-            <label class="btn btn-basic" for="btnradio1">About</label>
+        <div id="pokedex">
+            <div>
+                <h1 id="pokedex_info_name"></h1>
+                <span id="pokedex_info_type"></span>
+            </div>
 
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-            <label class="btn btn-basic" for="btnradio2">Base Stats</label>
-
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-            <label class="btn btn-basic" for="btnradio3">Evolution</label>
-
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-            <label class="btn btn-basic" for="btnradio3">Moves</label>
+            <span id="pokedex_info_id"></span>
         </div>
+
+        <div class="info-container">
+            <img id="pokemon_img" src="" alt="">
+        </div>
+
+        <div class="navigation">
+            <div class="btn-group " role="group" aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                <label class="btn btn-basic" for="btnradio1">About</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                <label class="btn btn-basic" for="btnradio2">Base Stats</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                <label class="btn btn-basic" for="btnradio3">Evolution</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                <label class="btn btn-basic" for="btnradio3">Moves</label>
+            </div>
+        </div>
+
+
+        <table>
+            <tr>
+                <td class="ml100">Species</td>
+                <td id="pokedex_info_species" class="ml100 bold"></td>
+            </tr>
+            <tr>
+                <td class="ml100">Height</td>
+                <td id="pokedex_info_height" class="ml100 bold"></td>
+            </tr>
+            <tr>
+                <td class="ml100">Weight</td>
+                <td id="pokedex_info_weight" class="ml100 bold"></td>
+            </tr>
+            <tr>
+                <td class="ml100">Abilities</td>
+                <td id="pokedex_info_abilities" class="ml100 bold"></td>
+            </tr>
+        </table>
     </div>
 
-    <table>
-        <tr>
-            <td>Species</td>
-            <td>blitz</td>
-        </tr>
-    </table>
 
 
 </body>

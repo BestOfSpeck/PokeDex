@@ -1,17 +1,33 @@
-async function loadPokedex() {
-    let url = `https://pokeapi.co/api/v2/pokemon/pikachu`;
-    let response = await fetch(url);
-    let responseAsJson = await response.json();
+    async function loadPokedex() {
+        let query = document.getElementById('search_input').value;
+        let url = `https://pokeapi.co/api/v2/pokemon/${query}`;
+        let response = await fetch(url);
+        let responseAsJson = await response.json();
 
 
-    renderPokemonInfo(responseAsJson);
-    console.log(responseAsJson);
-}
+        renderPokemonInfo(responseAsJson);
+        console.log(responseAsJson);
+    }
 
-function renderPokemonInfo(responseAsJson) {
-    document.getElementById('pokedex_info_name').innerHTML = responseAsJson['name'];
-    document.getElementById('pokemon_img').src = responseAsJson['sprites']['other']['home']['front_default'];
-    document.getElementById('pokedex_info_type').innerHTML = responseAsJson['types'][0]['type']['name'];
-    document.getElementById('pokedex_info_id').innerHTML = `#${responseAsJson['id']}`;
 
-}
+
+    function renderPokemonInfo(responseAsJson) {
+        document.getElementById('pokedex_info_name').innerHTML = responseAsJson['name'];
+        document.getElementById('pokemon_img').src = responseAsJson['sprites']['other']['home']['front_default'];
+        document.getElementById('pokedex_info_type').innerHTML = responseAsJson['types'][0]['type']['name'];
+        document.getElementById('pokedex_info_id').innerHTML = `#${responseAsJson['id']}`;
+        document.getElementById('pokedex_info_height').innerHTML = responseAsJson['height'];
+        document.getElementById('pokedex_info_weight').innerHTML = responseAsJson['weight'];
+        document.getElementById('pokedex_info_abilities').innerHTML = responseAsJson['abilities'][0]['ability']['name'];
+    }
+
+
+    window.addEventListener('load', function() {
+        let input = document.getElementById('search_input');
+        input.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                loadPokedex();
+            }
+        });
+    })
