@@ -9,14 +9,35 @@
         console.log(responseAsJson);
     }
 
-    function switchInformationes(selection) {
-        if (selection) {;
-            document.getElementById(selection).classList.add('d-none');
-        }
+    function switchInformationes1() {
+        document.getElementById('about_container').classList.remove('d-none');
+        document.getElementById('baseStats_container').classList.add('d-none');
+        document.getElementById('evolution_container').classList.add('d-none');
+        document.getElementById('moves_container').classList.add('d-none');
 
 
     }
 
+    function switchInformationes2() {
+        document.getElementById('about_container').classList.add('d-none');
+        document.getElementById('baseStats_container').classList.remove('d-none');
+        document.getElementById('evolution_container').classList.add('d-none');
+        document.getElementById('moves_container').classList.add('d-none');
+    }
+
+    function switchInformationes3() {
+        document.getElementById('about_container').classList.add('d-none');
+        document.getElementById('baseStats_container').classList.add('d-none');
+        document.getElementById('evolution_container').classList.remove('d-none');
+        document.getElementById('moves_container').classList.add('d-none');
+    }
+
+    function switchInformationes4() {
+        document.getElementById('about_container').classList.add('d-none');
+        document.getElementById('baseStats_container').classList.add('d-none');
+        document.getElementById('evolution_container').classList.add('d-none');
+        document.getElementById('moves_container').classList.remove('d-none');
+    }
 
     function renderPokemonInfo(responseAsJson) {
         document.getElementById('pokedex_info_name').innerHTML = responseAsJson['name'];

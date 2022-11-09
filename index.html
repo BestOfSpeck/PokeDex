@@ -34,16 +34,16 @@
     <div class="navigation">
         <div class="btn-group " role="group" aria-label="Basic radio toggle button group">
             <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-            <label id="btn_radio_0" onclick="switchInformationes('about_container')" class="btn btn-basic" for="btnradio1">About</label>
+            <label id="btn_radio_0" onclick="switchInformationes1()" class="btn btn-basic" for="btnradio1">About</label>
 
             <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-            <label id="btn_radio_1" onclick="switchInformationes('baseStats_container')" class="btn btn-basic" for="btnradio2">Base Stats</label>
+            <label id="btn_radio_1" onclick="switchInformationes2()" class="btn btn-basic" for="btnradio2">Base Stats</label>
 
             <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-            <label id="btn_radio_2" onclick="switchInformationes('btn_radio_2')" class="btn btn-basic" for="btnradio3">Evolution</label>
+            <label id="btn_radio_2" onclick="switchInformationes3()" class="btn btn-basic" for="btnradio3">Evolution</label>
 
             <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-            <label id="btn_radio_3" onclick="switchInformationes('btn_radio_3')" class="btn btn-basic" for="btnradio3">Moves</label>
+            <label id="btn_radio_3" onclick="switchInformationes4()" class="btn btn-basic" for="btnradio3">Moves</label>
         </div>
     </div>
 
@@ -101,7 +101,9 @@
     </div>
 
 
-    <div style="height:300px;"></div>
+    <div class="d-none" id="evolution_container" style="height:300px;"></div>
+
+    <div class="d-none" id="moves_container"></div>
 
 </body>
 

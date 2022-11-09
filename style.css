@@ -23,12 +23,16 @@
         margin-bottom: 40px;
     }
     
+    #pokedex div h1::first-letter {
+        text-transform: capitalize;
+    }
+    
     .info-container {
         background-color: white;
         border-top-left-radius: 40px;
         border-top-right-radius: 40px;
         margin-top: -40px;
-        min-height: 100px;
+        min-height: 50px;
         display: flex;
         justify-content: center;
         box-shadow: -0px -4px 9px -1px rgba(0, 0, 0, 0.34);
@@ -37,7 +41,10 @@
     }
     
     #pokemon_img {
-        margin-top: -400px;
+        height: 400px;
+        width: 400px;
+        margin-top: -350px;
+        object-fit: cover;
     }
     
     #pokedex_info_type {
@@ -61,7 +68,7 @@
     .navigation {
         display: flex;
         justify-content: center;
-        margin-bottom: 50px;
+        margin-bottom: 20px;
     }
     
     .btn-basic {
@@ -71,10 +78,13 @@
         font-family: poppins !important;
         margin-left: 30px !important;
         border-radius: 20px !important;
+        transition: all 1200ms ease;
     }
     
     .btn-basic:hover {
-        background-color: #fc6c6e28 !important;
+        letter-spacing: 5px;
+        transform: rotate(360deg);
+        transition: all 500ms ease;
     }
     
     .input-container {
