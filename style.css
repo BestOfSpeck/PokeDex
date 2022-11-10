@@ -5,7 +5,6 @@
     
     #pokedex {
         min-height: 50vh;
-        background-color: #FC6C6E;
         display: flex;
         justify-content: space-between;
         padding: 24px;
@@ -45,6 +44,8 @@
         width: 400px;
         margin-top: -350px;
         object-fit: cover;
+        -webkit-filter: drop-shadow(2px 1px 0 black) drop-shadow(-1px -1px 0 black);
+        filter: drop-shadow(2px 1px 0 black) drop-shadow(-1px -1px 0 black);
     }
     
     #pokedex_info_type {
@@ -52,7 +53,7 @@
         font-weight: bold;
         margin-left: 20px;
         padding: 10px;
-        background-color: rgba(255, 255, 255, 0.425);
+        background-color: rgba(255, 255, 255, 0.219);
         color: white;
         border-radius: 20px;
     }
@@ -82,9 +83,7 @@
     }
     
     .btn-basic:hover {
-        letter-spacing: 5px;
-        transform: rotate(360deg);
-        transition: all 500ms ease;
+        background-color: #7676763a !important;
     }
     
     .input-container {
@@ -132,6 +131,13 @@
         border-bottom: 1px solid #7676763a;
     }
     
+    .ml1000 {
+        font-size: 22px;
+        font-family: 'poppins';
+        padding: 20px 100px 20px 0px;
+        border-bottom: 1px solid #7676763a;
+    }
+    
     .bold {
         font-weight: bold;
     }
@@ -143,4 +149,25 @@
     
     .d-none {
         display: none;
+    }
+    
+    .baseStats-container {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .baseStats-container td {
+        border-bottom: none;
+    }
+    
+    .progress-container {
+        width: 700px;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .progress {
+        margin: 10px 0 33px 0;
     }
