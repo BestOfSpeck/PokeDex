@@ -1,6 +1,6 @@
     async function loadPokedex() {
         // let query = document.getElementById('search_input').value;
-        let url = `https://pokeapi.co/api/v2/pokemon/cacnea`;
+        let url = `https://pokeapi.co/api/v2/pokemon/charmander`;
         let response = await fetch(url);
         let responseAsJson = await response.json();
 
@@ -15,35 +15,25 @@
     function switchInformationes1() {
         document.getElementById('about_container').classList.remove('d-none');
         document.getElementById('baseStats_container').classList.add('d-none');
-        document.getElementById('evolution_container').classList.add('d-none');
         document.getElementById('moves_container').classList.add('d-none');
     }
 
     function switchInformationes2() {
         document.getElementById('about_container').classList.add('d-none');
         document.getElementById('baseStats_container').classList.remove('d-none');
-        document.getElementById('evolution_container').classList.add('d-none');
         document.getElementById('moves_container').classList.add('d-none');
     }
 
     function switchInformationes3() {
         document.getElementById('about_container').classList.add('d-none');
         document.getElementById('baseStats_container').classList.add('d-none');
-        document.getElementById('evolution_container').classList.remove('d-none');
-        document.getElementById('moves_container').classList.add('d-none');
-    }
-
-    function switchInformationes4() {
-        document.getElementById('about_container').classList.add('d-none');
-        document.getElementById('baseStats_container').classList.add('d-none');
-        document.getElementById('evolution_container').classList.add('d-none');
         document.getElementById('moves_container').classList.remove('d-none');
     }
 
     function renderPokemonInfo(responseAsJson) {
         document.getElementById('pokedex_info_name').innerHTML = responseAsJson['name'];
         document.getElementById('pokemon_img').src = responseAsJson['sprites']['other']['home']['front_default'];
-        document.getElementById('pokedex_info_type').innerHTML = responseAsJson['types'][0]['type']['name'];
+
         document.getElementById('pokedex_info_id').innerHTML = `#${responseAsJson['id']}`;
         document.getElementById('pokedex_info_height').innerHTML = responseAsJson['height'];
         document.getElementById('pokedex_info_weight').innerHTML = responseAsJson['weight'];
@@ -51,9 +41,14 @@
         for (let i = 0; i < responseAsJson['abilities'].length; i++) {
             const abilitie = responseAsJson['abilities'][i];
 
-            document.getElementById('pokedex_info_abilities').innerHTML = `
-            ${abilitie['ability']['name']}
+            document.getElementById('pokedex_info_abilities').innerHTML += `
+            <div class="abilitie-info">${abilitie['ability']['name']}</div>
             `;
+        }
+
+        for (let t = 0; t < responseAsJson['types'].length; t++) {
+            const typ = responseAsJson['types'][t];
+            document.getElementById('pokedex_info_type').innerHTML += `<div class="type-info">${typ['type']['name']}</div>`;
         }
 
     }
@@ -80,7 +75,8 @@
     function renderMoves(responseAsJson) {
         for (let i = 0; i < responseAsJson['moves'].length; i++) {
             const move = responseAsJson['moves'][i];
-            document.getElementById('moves_container').innerHTML = move['move']['name'];
+
+            document.getElementById('moves_container').innerHTML += `<div id="moves_card" class="moves-card">${move['move']['name']}</div>`;
 
         }
     }
@@ -92,7 +88,6 @@
         let spAtkInPercent = responseAsJson['stats'][3]['base_stat'];
         let spDefInPercent = responseAsJson['stats'][4]['base_stat'];
         let speedInPercent = responseAsJson['stats'][5]['base_stat'];
-
 
         document.getElementById('progress_bar_0').style.width = `${hpInPercent}%`;
         document.getElementById('progress_bar_1').style.width = `${AtkInPercent}%`;

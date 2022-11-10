@@ -49,6 +49,10 @@
     }
     
     #pokedex_info_type {
+        display: flex;
+    }
+    
+    .type-info {
         font-size: 20px;
         font-weight: bold;
         margin-left: 20px;
@@ -56,6 +60,19 @@
         background-color: rgba(255, 255, 255, 0.219);
         color: white;
         border-radius: 20px;
+    }
+    
+    .type-info::first-letter {
+        text-transform: capitalize;
+    }
+    
+    #pokedex_info_abilities {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .abilitie-info::first-letter {
+        text-transform: capitalize;
     }
     
     #pokedex_info_id {
@@ -170,4 +187,25 @@
     
     .progress {
         margin: 10px 0 33px 0;
+    }
+    
+    #moves_container {
+        margin: 0 20px 0 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .moves-card {
+        font-family: 'poppins';
+        padding: 10px;
+        margin: 10px;
+        border-radius: 15px;
+        background-color: #76767621;
+        border: 2px solid #767676a9;
+    }
+    
+    .moves-card::first-letter {
+        text-transform: capitalize;
     }
