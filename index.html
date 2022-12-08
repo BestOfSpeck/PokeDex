@@ -8,12 +8,39 @@
     <title>PokeDex</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fonts.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="script.js"></script>
 </head>
 
 <body onload="loadLandingpage()">
 
+    <header>
+        <div class="headline">
+            <h1>Poke<span>D</span>ex</h1>
+
+            <div class="header-input-container">
+                <input class="header-input" type="text" placeholder="...Search Pokemon...">
+            </div>
+
+            <div class="header-button-container">
+                <button class="header-button">Favorites</button>
+            </div>
+
+
+        </div>
+
+
+    </header>
+
     <div id="landing_page"></div>
+
+    <div id="detail_container" style="display: none;" onclick="returnToOverview() ">
+        <div id="detail_card" class="detail-board " onclick="clickDioalog(event) "></div>
+    </div>
+
+    <div class="button-container">
+        <button onclick="loadMorePokemon()">Mehr Pokemon</button>
+    </div>
 
 </body>
 
