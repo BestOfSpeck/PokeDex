@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fonts.css">
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="script.js"></script>
 </head>
 
@@ -16,29 +17,31 @@
 
     <header>
         <div class="headline">
-            <h1>Poke<span>D</span>ex</h1>
+            <a href="/index.html">
+                <h1>Poke<span>D</span>ex</h1>
+            </a>
 
             <div class="header-input-container">
                 <input class="header-input" type="text" placeholder="...Search Pokemon...">
             </div>
 
             <div class="header-button-container">
-                <button class="header-button">Favorites</button>
+                <button onclick="showFavorites()" class="header-button">Favorites</button>
             </div>
-
-
         </div>
-
-
     </header>
 
     <div id="landing_page"></div>
+
+    <div id="favorites"></div>
 
     <div id="detail_container" style="display: none;" onclick="returnToOverview() ">
         <div id="detail_card" class="detail-board " onclick="clickDioalog(event) "></div>
     </div>
 
-    <div class="button-container">
+
+
+    <div id="button_container" class="button-container">
         <button onclick="loadMorePokemon()">Mehr Pokemon</button>
     </div>
 

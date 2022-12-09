@@ -1,5 +1,8 @@
 let currendPokemon;
-let maxPokeValue = 24;
+let maxPokeValue = 57;
+let favName = [];
+let favImg = [];
+loadFavorites();
 
 async function loadLandingpage() {
     for (let f = 1; f < maxPokeValue; f++) {
@@ -8,9 +11,120 @@ async function loadLandingpage() {
         let currendPokemon = await response.json();
 
         renderOverwiev(currendPokemon, f);
+
+    }
+
+}
+
+
+async function openDetail(i) {
+    document.getElementById('detail_container').style.display = '';
+    document.getElementById('detail_card').innerHTML = '';
+
+    let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
+    let response = await fetch(url);
+    let responseAsJson = await response.json();
+
+    generateDetailCard(responseAsJson);
+    console.log(responseAsJson);
+    updateProgressBar(responseAsJson);
+    generateColors(responseAsJson)
+}
+
+function showFavorites() {
+    document.getElementById('landing_page').classList.add('d-none');
+    document.getElementById('button_container').classList.add('d-none');
+    document.getElementById('favorites').innerHTML = '';
+    for (let i = 0; i < favName.length; i++) {
+        const element = favName[i];
+        document.getElementById('favorites').innerHTML = `
+        <div class="fav-container">
+            ${favName}
+            ${favImg}
+        </div>
+        `;
     }
 }
 
+function addToFavorite() {
+
+    let poke = document.getElementById('forSave').innerHTML;
+    let pokeImg = document.getElementById('detail_card_img').img;
+
+    favName.push(poke);
+    favImg.push(pokeImg);
+
+    saveFavorite();
+}
+
+function saveFavorite() {
+    let pokeAsText = JSON.stringify(favName);
+    let imgAsText = JSON.stringify(favImg);
+    localStorage.setItem('pokemon', pokeAsText.outerHTML);
+    localStorage.setItem('img', imgAsText);
+}
+
+function loadFavorites() {
+    let pokeAstext = localStorage.getItem('pokemon');
+    let imgAstext = localStorage.getItem('img');
+    favName = JSON.parse(pokeAstext);
+    favImg = JSON.parse(imgAstext);
+}
+
+
+function openAbout() {
+    document.getElementById('about_container').classList.remove('d-none');
+    document.getElementById('bast-stats_container').classList.add('d-none');
+    document.getElementById('moves-container').classList.add('d-none');
+}
+
+
+function openBastStats() {
+    document.getElementById('about_container').classList.add('d-none');
+    document.getElementById('bast-stats_container').classList.remove('d-none');
+    document.getElementById('moves-container').classList.add('d-none');
+}
+
+
+function openEvolution() {
+    document.getElementById('about_container').classList.add('d-none');
+    document.getElementById('bast-stats_container').classList.add('d-none');
+    document.getElementById('moves-container').classList.add('d-none');
+}
+
+
+function openMoves() {
+    document.getElementById('about_container').classList.add('d-none');
+    document.getElementById('bast-stats_container').classList.add('d-none');
+    document.getElementById('moves-container').classList.remove('d-none');
+}
+
+
+function returnToOverview() {
+    document.getElementById('detail_container').style.display = 'none';
+}
+
+
+function clickDioalog(e) {
+    e.stopPropagation();
+}
+
+
+function updateProgressBar(responseAsJson) {
+    let percent = responseAsJson['stats'][0]['base_stat'];
+    let percent1 = responseAsJson['stats'][1]['base_stat'];
+    let percent2 = responseAsJson['stats'][2]['base_stat'];
+    let percent3 = responseAsJson['stats'][3]['base_stat'];
+    let percent4 = responseAsJson['stats'][4]['base_stat'];
+    let percent5 = responseAsJson['stats'][5]['base_stat'];
+
+    document.getElementById('progress-bar').style.width = `${percent}%`;
+    document.getElementById('progress-bar1').style.width = `${percent1}%`;
+    document.getElementById('progress-bar2').style.width = `${percent2}%`;
+    document.getElementById('progress-bar3').style.width = `${percent3}%`;
+    document.getElementById('progress-bar4').style.width = `${percent4}%`;
+    document.getElementById('progress-bar5').style.width = `${percent5}%`;
+}
 
 
 function generateColors(responseAsJson) {
@@ -70,83 +184,30 @@ function generateColors(responseAsJson) {
     if (type == 'ghost') {
         document.getElementById('detail_card_img_radius').style.border = "4px solid #705898";
     }
-
-
 }
 
-function renderOverwiev(currendPokemon, i) {
-    document.getElementById('landing_page').innerHTML += `
-        <div id="landingPage_card" class="landingPage-card" onclick="openDetail(${i})">
-            <div class="name">
-                <div class="landingPage-card-name">${currendPokemon['name']}</div>
-                <div class="landingPage-card-order">#${currendPokemon['order']}</div>
-            </div>
-           <div class="landingPage-card-img"><img src="${currendPokemon['sprites']['other']['home']['front_default']}"></div>
-          <div class="landingPage-card-type">${currendPokemon['types'][0]['type']['name']}</div>
-        </div> 
-        `;
-
-}
-
-async function openDetail(i) {
-    document.getElementById('detail_container').style.display = '';
-    document.getElementById('detail_card').innerHTML = '';
-
-    let url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-    let response = await fetch(url);
-    let responseAsJson = await response.json();
-
-    generateDetailCard(responseAsJson);
-    console.log(responseAsJson);
-    updateProgressBar(responseAsJson);
-    generateColors(responseAsJson)
-}
-
-function openAbout() {
-    document.getElementById('about_container').classList.remove('d-none');
-    document.getElementById('bast-stats_container').classList.add('d-none');
-    document.getElementById('moves-container').classList.add('d-none');
-}
-
-function openBastStats() {
-    document.getElementById('about_container').classList.add('d-none');
-    document.getElementById('bast-stats_container').classList.remove('d-none');
-    document.getElementById('moves-container').classList.add('d-none');
-}
-
-function openEvolution() {
-    document.getElementById('about_container').classList.add('d-none');
-    document.getElementById('bast-stats_container').classList.add('d-none');
-    document.getElementById('moves-container').classList.add('d-none');
-}
-
-function openMoves() {
-    document.getElementById('about_container').classList.add('d-none');
-    document.getElementById('bast-stats_container').classList.add('d-none');
-    document.getElementById('moves-container').classList.remove('d-none');
-}
-
-function returnToOverview() {
-    document.getElementById('detail_container').style.display = 'none';
-}
-
-function clickDioalog(e) {
-    e.stopPropagation();
-}
 
 function generateDetailCard(responseAsJson) {
     document.getElementById('detail_card').innerHTML = `
+    
     <div class="detail-card-container">
          <div class="detail-card-name-container">
-                <div class="detail-card-name">${responseAsJson['name']}</div>
+                <div id="detail_card_name" class="detail-card-name">
+                <div id="forSave">${responseAsJson['name']}</div>
+                    
+                    
+                    <div id="detail_card_types" class="detail-card-type-container"></div>
+                </div>
+                <img onclick="addToFavorite()" id="detail_card_fav" class="detail-card-fav material-symbols-outlined" src="/assets/img/fav.png" alt="">
          </div>
-        <div id="detail_card_types" class="detail-card-type-container"></div>
 
+        
 
          <div class="detail-card-img-container">
-                <div id="detail_card_img_radius" class="detail-card-img-radius"><img class="detail-card-img" src="${responseAsJson['sprites']['other']['home']['front_default']}"></div>
+                <div id="detail_card_img_radius" class="detail-card-img-radius"><img id="detail_card_img" class="detail-card-img"  src="${responseAsJson['sprites']['other']['home']['front_default']}"></div>
          </div>
     </div>
+
     <div class="detail-card-nav">
         <nav class="nav nav-pills nav-justified">
             <a id="nav" class="nav-item nav-link" onclick="openAbout()" href="#">About</a>
@@ -216,8 +277,6 @@ function generateDetailCard(responseAsJson) {
     </div> 
 
     <div class="moves-container d-none" id="moves-container"></div>
-    
-    
     `;
 
     for (let t = 0; t < responseAsJson['moves'].length; t++) {
@@ -242,18 +301,15 @@ function generateDetailCard(responseAsJson) {
     }
 }
 
-function updateProgressBar(responseAsJson) {
-    let percent = responseAsJson['stats'][0]['base_stat'];
-    let percent1 = responseAsJson['stats'][1]['base_stat'];
-    let percent2 = responseAsJson['stats'][2]['base_stat'];
-    let percent3 = responseAsJson['stats'][3]['base_stat'];
-    let percent4 = responseAsJson['stats'][4]['base_stat'];
-    let percent5 = responseAsJson['stats'][5]['base_stat'];
-
-    document.getElementById('progress-bar').style.width = `${percent}%`;
-    document.getElementById('progress-bar1').style.width = `${percent1}%`;
-    document.getElementById('progress-bar2').style.width = `${percent2}%`;
-    document.getElementById('progress-bar3').style.width = `${percent3}%`;
-    document.getElementById('progress-bar4').style.width = `${percent4}%`;
-    document.getElementById('progress-bar5').style.width = `${percent5}%`;
+function renderOverwiev(currendPokemon, i) {
+    document.getElementById('landing_page').innerHTML += `
+        <div id="landingPage_card" class="landingPage-card" onclick="openDetail(${i})">
+            <div class="name">
+                <div class="landingPage-card-name">${currendPokemon['name']}</div>
+                <div class="landingPage-card-order">#${currendPokemon['order']}</div>
+            </div>
+           <div class="landingPage-card-img"><img src="${currendPokemon['sprites']['other']['home']['front_default']}"></div>
+          <div class="landingPage-card-type">${currendPokemon['types'][0]['type']['name']}</div>
+        </div> 
+        `;
 }
