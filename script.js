@@ -1,8 +1,8 @@
 let currendPokemon;
 let maxPokeValue = 57;
 let favName = [];
-let favImg = [];
-loadFavorites();
+
+
 
 async function loadLandingpage() {
     for (let f = 1; f < maxPokeValue; f++) {
@@ -11,9 +11,7 @@ async function loadLandingpage() {
         let currendPokemon = await response.json();
 
         renderOverwiev(currendPokemon, f);
-
     }
-
 }
 
 
@@ -31,44 +29,35 @@ async function openDetail(i) {
     generateColors(responseAsJson)
 }
 
+
 function showFavorites() {
-    document.getElementById('landing_page').classList.add('d-none');
-    document.getElementById('button_container').classList.add('d-none');
-    document.getElementById('favorites').innerHTML = '';
-    for (let i = 0; i < favName.length; i++) {
-        const element = favName[i];
-        document.getElementById('favorites').innerHTML = `
-        <div class="fav-container">
-            ${favName}
-            ${favImg}
-        </div>
-        `;
+    let isDisplayed = document.getElementById('favorites').style.display;
+    if (isDisplayed == "none") {
+        openFavorites();
+    } else {
+        closeFavorites();
     }
 }
 
+
 function addToFavorite() {
-
+    document.getElementById('detail_card_fav').style.outline = 'red';
     let poke = document.getElementById('forSave').innerHTML;
-    let pokeImg = document.getElementById('detail_card_img').img;
-
     favName.push(poke);
-    favImg.push(pokeImg);
 
     saveFavorite();
 }
 
+
 function saveFavorite() {
     let pokeAsText = JSON.stringify(favName);
-    let imgAsText = JSON.stringify(favImg);
     localStorage.setItem('pokemon', pokeAsText.outerHTML);
-    localStorage.setItem('img', imgAsText);
 }
+
 
 function loadFavorites() {
     let pokeAstext = localStorage.getItem('pokemon');
-    let imgAstext = localStorage.getItem('img');
     favName = JSON.parse(pokeAstext);
-    favImg = JSON.parse(imgAstext);
 }
 
 
@@ -198,7 +187,7 @@ function generateDetailCard(responseAsJson) {
                     
                     <div id="detail_card_types" class="detail-card-type-container"></div>
                 </div>
-                <img onclick="addToFavorite()" id="detail_card_fav" class="detail-card-fav material-symbols-outlined" src="/assets/img/fav.png" alt="">
+                <img onclick="addToFavorite()" id="detail_card_fav" class="material-symbols-outlined detail-card-fav" src="/assets/img/fav.png" alt="">
          </div>
 
         
@@ -301,6 +290,7 @@ function generateDetailCard(responseAsJson) {
     }
 }
 
+
 function renderOverwiev(currendPokemon, i) {
     document.getElementById('landing_page').innerHTML += `
         <div id="landingPage_card" class="landingPage-card" onclick="openDetail(${i})">
@@ -312,4 +302,27 @@ function renderOverwiev(currendPokemon, i) {
           <div class="landingPage-card-type">${currendPokemon['types'][0]['type']['name']}</div>
         </div> 
         `;
+}
+
+
+function openFavorites() {
+    document.getElementById('header_button').innerHTML = "Close"
+    document.getElementById('favorites').style.display = "";
+    document.getElementById('button_container').classList.add('d-none');
+    document.getElementById('favorites').innerHTML = '';
+    for (let i = 0; i < favName.length; i++) {
+        const element = favName[i];
+        document.getElementById('favorites').innerHTML += `
+        <div class="fav-container">
+            ${element}
+        </div>
+        `;
+    }
+}
+
+
+function closeFavorites() {
+    document.getElementById('header_button').innerHTML = "Favorites"
+    document.getElementById('favorites').style.display = "none";
+    document.getElementById('button_container').classList.remove('d-none');
 }
