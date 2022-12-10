@@ -42,10 +42,13 @@ function showFavorites() {
 
 function addToFavorite() {
     document.getElementById('detail_card_fav').style.outline = 'red';
+    document.getElementById('detail_card').style.border = '2px solid red';
+
     let poke = document.getElementById('forSave').innerHTML;
     favName.push(poke);
 
     saveFavorite();
+
 }
 
 

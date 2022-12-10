@@ -197,6 +197,16 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        animation: popUp 60ms linear;
+    }
+    
+    @keyframes popUp {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
     }
     
     .detail-board {
@@ -207,6 +217,18 @@
         border: 2px solid #75757557;
         margin-top: 70px;
         padding: 10px;
+        animation: pop 125ms linear;
+    }
+    
+    @keyframes pop {
+        from {
+            height: 0px;
+            width: 0px;
+        }
+        to {
+            height: 800px;
+            width: 600px;
+        }
     }
     
     .detail-card-container {
@@ -448,15 +470,32 @@
         top: 0;
         right: 0;
         background-color: #d4d4d4;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
+        padding-top: 100px;
         border-left: 2px solid #75757565;
         transition: all 110ms ease-in-out;
+        animation: moveLeft 125ms linear;
+    }
+    
+    @keyframes moveLeft {
+        0% {
+            width: 0%;
+        }
+        25% {
+            width: 5%;
+        }
+        50% {
+            width: 10%;
+        }
+        75% {
+            width: 12%;
+        }
+        100% {
+            width: 15%;
+        }
     }
     
     .fav-container {
+        text-align: center;
         border: 2px solid #75757573;
         padding: 10px;
         border-radius: 10px;
