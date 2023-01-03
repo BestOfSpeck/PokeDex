@@ -12,6 +12,13 @@ async function loadLandingpage() {
 
         renderOverwiev(currendPokemon, f);
     }
+
+    gsap.to("#landingPage_card", {
+        y: -100,
+        opacity: 1,
+        duration: 0.5,
+        stagger: 0.1,
+    });
 }
 
 
@@ -26,7 +33,9 @@ async function openDetail(i) {
     generateDetailCard(responseAsJson);
     console.log(responseAsJson);
     updateProgressBar(responseAsJson);
-    generateColors(responseAsJson)
+    generateColors(responseAsJson);
+
+    gsap.to("#landingPage_card", {});
 }
 
 
@@ -41,14 +50,12 @@ function showFavorites() {
 
 
 function addToFavorite() {
-    document.getElementById('detail_card_fav').style.outline = 'red';
     document.getElementById('detail_card').style.border = '2px solid red';
 
     let poke = document.getElementById('forSave').innerHTML;
     favName.push(poke);
 
     saveFavorite();
-
 }
 
 
@@ -186,14 +193,11 @@ function generateDetailCard(responseAsJson) {
          <div class="detail-card-name-container">
                 <div id="detail_card_name" class="detail-card-name">
                 <div id="forSave">${responseAsJson['name']}</div>
-                    
-                    
+
                     <div id="detail_card_types" class="detail-card-type-container"></div>
                 </div>
                 <img onclick="addToFavorite()" id="detail_card_fav" class="material-symbols-outlined detail-card-fav" src="/assets/img/fav.png" alt="">
          </div>
-
-        
 
          <div class="detail-card-img-container">
                 <div id="detail_card_img_radius" class="detail-card-img-radius"><img id="detail_card_img" class="detail-card-img"  src="${responseAsJson['sprites']['other']['home']['front_default']}"></div>
@@ -304,7 +308,7 @@ function renderOverwiev(currendPokemon, i) {
            <div class="landingPage-card-img"><img src="${currendPokemon['sprites']['other']['home']['front_default']}"></div>
           <div class="landingPage-card-type">${currendPokemon['types'][0]['type']['name']}</div>
         </div> 
-        `;
+    `;
 }
 
 

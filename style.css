@@ -123,7 +123,7 @@
     }
     
     #landing_page {
-        margin-top: 30px;
+        margin-top: 130px;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -142,6 +142,7 @@
         -webkit-box-shadow: 0px 10px 7px -2px rgba(0, 0, 0, 0.3);
         -moz-box-shadow: 0px 10px 7px -2px rgba(0, 0, 0, 0.3);
         transition: all 125ms ease-in-out;
+        opacity: 0;
     }
     
     .landingPage-card:hover {
@@ -217,7 +218,7 @@
         border: 2px solid #75757557;
         margin-top: 70px;
         padding: 10px;
-        animation: pop 125ms linear;
+        animation: pop 100ms linear;
     }
     
     @keyframes pop {
