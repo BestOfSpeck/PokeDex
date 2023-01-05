@@ -4,9 +4,31 @@
         scroll-behavior: smooth;
         background-color: rgba(119, 102, 119, 0.123) !important;
     }
+    /* ===== Scrollbar CSS ===== */
+    /* Firefox */
+    
+    body {
+        scrollbar-width: auto;
+        scrollbar-color: #828282 #ffffff;
+    }
+    /* Chrome, Edge, and Safari */
+    
+    body::-webkit-scrollbar {
+        width: 12px;
+    }
+    
+    *::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    *::-webkit-scrollbar-thumb {
+        background-color: #828282;
+        border-radius: 5px;
+        border: 6px none #000000;
+    }
     
     .material-symbols-outlined {
-        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 48
     }
     
     header {
@@ -123,7 +145,7 @@
     }
     
     #landing_page {
-        margin-top: 130px;
+        margin-top: 70px;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;

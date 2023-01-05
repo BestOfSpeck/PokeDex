@@ -1,5 +1,5 @@
 let currendPokemon;
-let maxPokeValue = 57;
+let maxPokeValue = 73;
 let favName = [];
 
 
@@ -14,10 +14,12 @@ async function loadLandingpage() {
     }
 
     gsap.to("#landingPage_card", {
-        y: -100,
+        y: -30,
+        duration: 0.3,
+        // stagger: 0.1,
         opacity: 1,
-        duration: 0.5,
-        stagger: 0.1,
+        ease: 'bounce.out',
+
     });
 }
 
@@ -35,7 +37,7 @@ async function openDetail(i) {
     updateProgressBar(responseAsJson);
     generateColors(responseAsJson);
 
-    gsap.to("#landingPage_card", {});
+
 }
 
 
@@ -330,6 +332,6 @@ function openFavorites() {
 
 function closeFavorites() {
     document.getElementById('header_button').innerHTML = "Favorites"
-    document.getElementById('favorites').style.display = "none";
+    document.getElementById('favorites').style = "display: none;";
     document.getElementById('button_container').classList.remove('d-none');
 }
