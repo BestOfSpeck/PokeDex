@@ -1,0 +1,23 @@
+<div class="d-flex flex-wrap gap-3 justify-content-center my-3">
+    <div class="card bg-dark shadows" style="width: 18rem; height: 27rem;"
+        *ngFor="let item of data; let i = index;">
+        <div>
+            <div [id]="'carouselExampleFade_' + i" class="carousel slide carousel-fade">
+                <div class="carousel-inner">
+                    <div class="carousel-item height-100p active">
+                        <div>
+                            <div class="rounded-circle bg-secondary m-4 shadows-inset">
+                                <img [src]="item.imageUrl" class="card-img-top">
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title text-white-50 m-0">{{ item.name | titlecase }}</h2>
+                                <p class="card-text text-white-50">{{ item.type | titlecase}}</p>
+                                <button class="btn btn-danger w-100" (click)="removeFromPokeDex(item)">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
