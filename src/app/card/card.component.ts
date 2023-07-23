@@ -21,12 +21,10 @@ export class CardComponent implements OnInit {
   getPokemonList() {
     this.pokeDataService.getPokemonList(0, 20).then((response) => {
       this.pokemonList = response['data']['results'];
-      console.log(response);
       this.pokemonList.forEach((pokemon) => {
         const pokemonName = pokemon.name;
         this.getPokemonDetails(pokemonName).then((response) => {
           this.getPokemonData(pokemon, response);
-          console.log(pokemon);
         });
       });
     });
@@ -51,7 +49,7 @@ export class CardComponent implements OnInit {
     return this.pokeDataService.getPokemonDetails(name);
   }
 
-  async loadMorePokemon() {
+  loadMorePokemon() {
     const lenght = this.pokemonList.length;
     const limit = 20;
     this.isLoading = true;
@@ -73,13 +71,5 @@ export class CardComponent implements OnInit {
       }, 100);
       this.isLoading = false;
     });
-  }
-
-  showDetail(pokemon: any) {
-    pokemon.showDetails = true;
-  }
-
-  addToFavorite(pokemon: any) {
-    this.pokeDataService.addToFavorites(pokemon);
   }
 }
