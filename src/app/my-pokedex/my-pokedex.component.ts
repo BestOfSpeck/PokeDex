@@ -21,7 +21,7 @@ export class MyPokedexComponent implements OnInit {
   }
 
   removeFromPokeDex(pokemon: any) {
-    this.pokeDataService.removeFromFavorites(pokemon);
+    this.pokeDataService.removeFromLocalStorage(pokemon);
     this.loadToData();
   }
 }

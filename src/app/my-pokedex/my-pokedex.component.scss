@@ -1,0 +1,16 @@
+.height-100p {
+  height: 27rem;
+}
+
+.card-row {
+  display: flex;
+  justify-content: space-between;
+  width: 75%;
+  border-bottom: 1px solid #6c757d27;
+}
+
+.card-data {
+  flex: 1;
+  text-align: center;
+  padding: 5px;
+}

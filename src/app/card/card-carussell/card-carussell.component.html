@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <h2 class="card-title text-white-50 m-0">{{ item.name | titlecase }}</h2>
                     <p class="card-text text-white-50">{{ item.type | titlecase}}</p>
-                    <button class="btn btn-danger w-100" (click)="addToFavorite(item)">Add to fav</button>
+                    <button class="btn btn-danger w-100" (click)="addToFavorite(item)" [disabled]="isButtonDisabled">Add to fav</button>
                 </div>
             </div>
         </div>

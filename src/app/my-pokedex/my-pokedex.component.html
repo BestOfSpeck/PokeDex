@@ -1,6 +1,69 @@
 <div class="d-flex flex-wrap gap-3 justify-content-center my-3">
     <div class="card bg-dark shadows" style="width: 18rem; height: 27rem;" *ngFor="let item of data; let i = index;">
         <div>
-            <app-card-carussell [item]="item" [i]="i"></app-card-carussell>
+            <div [id]="'carouselExample_' + i" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item height-100p active">
+                        <div>
+                            <div class="rounded-circle bg-secondary m-4 shadows-inset">
+                                <img [src]="item.imageUrl" class="card-img-top">
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title text-white-50 m-0">{{ item.name | titlecase }}</h2>
+                                <p class="card-text text-white-50">{{ item.type | titlecase}}</p>
+                                <button class="btn btn-danger w-100" (click)="removeFromPokeDex(item)">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item height-100p">
+                        <h2 class="text-white-50 text-center my-4">Stats</h2>
+                        <hr class="text-white-50">
+                        <table class="h-100 w-100 d-flex flex-column center align-items-center gap-2">
+                            <tr class="text-white-50 card-row">
+                                <td class="card-data">HP</td>
+                                <td class="text-white-50 card-data">{{ item.hp }}</td>
+                            </tr>
+                            <tr class="text-white-50 card-row">
+                                <td class="card-data">Atk</td>
+                                <td class="text-white-50 card-data">{{ item.attack }}</td>
+                            </tr>
+                            <tr class="text-white-50 card-row">
+                                <td class="card-data">Def</td>
+                                <td class="text-white-50 card-data">{{ item.defense }}</td>
+                            </tr>
+                            <tr class="text-white-50 card-row">
+                                <td class="card-data">spAtk</td>
+                                <td class="text-white-50 card-data">{{ item.specialAttack }}</td>
+                            </tr>
+                            <tr class="text-white-50 card-row">
+                                <td class="card-data">spDef</td>
+                                <td class="text-white-50 card-data">{{ item. specialDefense}}</td>
+                            </tr>
+                            <tr class="text-white-50 card-row">
+                                <td class="card-data">Speed</td>
+                                <td class="text-white-50 card-data">{{ item.speed }}</td>
+                            </tr>
+                            <tr class="text-white-50 card-row">
+                                <td class="card-data">Weight</td>
+                                <td class="text-white-50 card-data">{{ item.weight }}</td>
+                            </tr>
+                            <tr class="text-white-50 card-row">
+                                <td class="card-data">Height</td>
+                                <td class="text-white-50 card-data">{{ item.height }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#carouselExample_' + i"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#carouselExample_' + i"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
         </div>
     </div>

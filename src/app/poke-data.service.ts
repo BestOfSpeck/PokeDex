@@ -5,7 +5,7 @@ import axios from 'axios';
   providedIn: 'root',
 })
 export class PokeDataService {
- private baseUrl = 'https://pokeapi.co/api/v2/';
+  private baseUrl = 'https://pokeapi.co/api/v2/';
 
   constructor() {}
 
@@ -19,12 +19,6 @@ export class PokeDataService {
     return axios.get(url);
   }
 
-  addToFavorites(pokemon: any) {
-    const favorites = this.getFavorites();
-    favorites.push(pokemon);
-    localStorage.setItem('favorites', JSON.stringify(favorites));
-  }
-
   getFavorites() {
     const favorites = localStorage.getItem('favorites');
     if (!favorites) {
@@ -34,7 +28,12 @@ export class PokeDataService {
     return JSON.parse(favorites);
   }
 
-  removeFromFavorites(pokemon: any) {
+  addToLocalStorage(pokemon: any) {
+    const favorites = this.getFavorites();
+    favorites.push(pokemon);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }
+  removeFromLocalStorage(pokemon: any) {
     const favorites = this.getFavorites();
     const newFavorites = favorites.filter((p: any) => p.name !== pokemon.name);
     localStorage.setItem('favorites', JSON.stringify(newFavorites));

@@ -10,9 +10,12 @@ export class CardCarussellComponent {
   @Input() item: any;
   @Input() i?: number;
 
+  isButtonDisabled: boolean = false;
+
   constructor(private pokeDataService: PokeDataService) {}
 
   addToFavorite(pokemon: any) {
-    this.pokeDataService.addToFavorites(pokemon);
+    this.pokeDataService.addToLocalStorage(pokemon);
+    this.isButtonDisabled = true;
   }
 }

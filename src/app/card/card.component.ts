@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PokeDataService } from '../poke-data.service';
 
 @Component({
@@ -6,15 +6,13 @@ import { PokeDataService } from '../poke-data.service';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
   pokemonList: any[] = [];
   newPokemonList: any[] = [];
   isLoading = false;
   showDetails = false;
 
-  constructor(private pokeDataService: PokeDataService) {}
-
-  ngOnInit(): void {
+  constructor(private pokeDataService: PokeDataService) {
     this.getPokemonList();
   }
 
@@ -51,7 +49,7 @@ export class CardComponent implements OnInit {
 
   loadMorePokemon() {
     const lenght = this.pokemonList.length;
-    const limit = 20;
+    const limit = 60;
     this.isLoading = true;
 
     this.pokeDataService.getPokemonList(lenght, limit).then((response) => {
@@ -62,6 +60,7 @@ export class CardComponent implements OnInit {
         this.getPokemonDetails(pokemonName).then((response) => {
           pokemon.imageUrl = response['data']['sprites']['front_default'];
           pokemon.type = response['data']['types'][0]['type']['name'];
+          this.getPokemonData(pokemon, response);
           console.log(response);
         });
       });
